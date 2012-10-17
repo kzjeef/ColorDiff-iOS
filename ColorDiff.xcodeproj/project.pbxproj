@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29B5B26B162D82C8002D6DEE /* CDTextProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B5B26A162D82C8002D6DEE /* CDTextProcessor.m */; };
 		29B64B08162AB10C0046A4E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B64B07162AB10C0046A4E4 /* UIKit.framework */; };
 		29B64B0A162AB10C0046A4E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B64B09162AB10C0046A4E4 /* Foundation.framework */; };
 		29B64B0C162AB10C0046A4E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B64B0B162AB10C0046A4E4 /* CoreGraphics.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29B5B269162D82C8002D6DEE /* CDTextProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTextProcessor.h; sourceTree = "<group>"; };
+		29B5B26A162D82C8002D6DEE /* CDTextProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTextProcessor.m; sourceTree = "<group>"; };
 		29B64B03162AB10C0046A4E4 /* ColorDiff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorDiff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B64B07162AB10C0046A4E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29B64B09162AB10C0046A4E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,6 +148,8 @@
 				29B64B19162AB10D0046A4E4 /* Default.png */,
 				29B64B1B162AB10D0046A4E4 /* Default@2x.png */,
 				29B64B1D162AB10D0046A4E4 /* Default-568h@2x.png */,
+				29B5B269162D82C8002D6DEE /* CDTextProcessor.h */,
+				29B5B26A162D82C8002D6DEE /* CDTextProcessor.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				29B64B18162AB10D0046A4E4 /* CDAppDelegate.m in Sources */,
 				29B64B27162AB10D0046A4E4 /* CDMasterViewController.m in Sources */,
 				29B64B2A162AB10D0046A4E4 /* CDDetailViewController.m in Sources */,
+				29B5B26B162D82C8002D6DEE /* CDTextProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +473,7 @@
 				29B64B44162AB10D0046A4E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		29B64B45162AB10D0046A4E4 /* Build configuration list for PBXNativeTarget "ColorDiffTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +482,7 @@
 				29B64B47162AB10D0046A4E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
