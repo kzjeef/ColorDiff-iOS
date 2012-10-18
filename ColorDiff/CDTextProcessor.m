@@ -15,9 +15,19 @@
 // git format-patch or something like svn or raw diff output.
 //
 // then it should call the different render to do the actually render job.
-- (NSMutableAttributedString *) processPatchText:(NSMutableAttributedString*) attstring withTheme: (int) theme suggestFormat:(NSString *) format
+- (NSMutableAttributedString *) processPatchText:(NSMutableAttributedString *) attstring
+                                       withTheme:(int) theme
+                                   suggestFormat:(NSString *) format
 {
     
 }
 
+/*
+ * This function return the patch format for the input text.
+ * return type should be like: diffu, diffc, etc, aligh with colordiff.pl
+ */
+- (NSString *) detechPatchFormatForText:(NSMutableAttributedString *) attstring
+{
+    
+}
 @end
