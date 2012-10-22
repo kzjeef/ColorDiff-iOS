@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-enum CDTextColorTheme {
+typedef enum CDTextColorTheme {
     COLOR_TEXT_THEME_DAY,
-    COLOR_TEXT_THEME_NIGHT,
-};
+    COLOR_TEXT_THEME_NIGHT, 
+} CDTextColorTheme;
 
 /**
  * This class is add the color attribute to the text passed in.
@@ -19,13 +19,18 @@ enum CDTextColorTheme {
  * It was the main enter of ColorDiff Module.
  *
  */
-@interface CDTextProcessor : UICollectionViewController
+@interface CDTextProcessor : NSObject
 
 /**
  * This function is main enter of this class.
  * @attstring : the input mutable string.
+ * @theme: theme of this attr request
+ * @format: suggest format, if pass nil, will use auto detect from the text.
+ * 
  * @return: return the modified attribute string.
  */
-- (NSMutableAttributedString *) processPatchText:(NSMutableAttributedString*) attstring withTheme:(int) theme suggestFormat:(NSString *) format;
+- (NSMutableAttributedString *) processPatchText:(NSMutableAttributedString*) attstring
+                                       withTheme:(CDTextColorTheme) theme
+                                   suggestFormat:(NSString *) format;
 
 @end

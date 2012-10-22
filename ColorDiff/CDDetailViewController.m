@@ -7,8 +7,12 @@
 //
 
 #import "CDDetailViewController.h"
+#import "CDTextProcessor.h"
 
 @interface CDDetailViewController ()
+{
+    CDTextProcessor *processor;
+}
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
@@ -21,7 +25,6 @@
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
-        
         // Update the view.
         [self configureView];
     }
@@ -40,11 +43,35 @@
     }
 }
 
+- (void)openApplicationWithURL:(NSNotification *)notification 
+{
+    NSURL *url;
+    
+    url = [notification object];
+    
+    if ([url isKindOfClass:[NSURL class ]] && [url isFileURL]) {
+        // open set the content to this.
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    processor = [[CDTextProcessor alloc] init];
+    
+    NSLog(@"Detail View Controller did load");
+
     [self configureView];
+    
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc
+                                       ] initWithAttributedString:self.textView.attributedText];
+    self.textView.attributedText = [processor processPatchText:str withTheme:COLOR_TEXT_THEME_DAY suggestFormat:@"diffu"];
+    
+    NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
+    [dnc addObserver:self selector:@selector(openApplicationWithURL:)
+                name:CDOpenNewDocumentNotify
+              object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,4 +96,23 @@
     self.masterPopoverController = nil;
 }
 
+- (IBAction)ColorIconClicked:(id)sender {
+    
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc
+                                       ] initWithString:self.textView.text];
+    [self.textView setEditable:YES];
+    
+
+    [processor processPatchText:str withTheme:COLOR_TEXT_THEME_DAY suggestFormat:@"diffu"];
+
+    [self.textView setAttributedText:str];
+
+    NSLog(@"|||||||||||||||||||||||||||||||||");
+    
+    NSLog(@"STD: %@", str);
+    NSLog(@"-----------------------------");
+    NSLog(@"%@", self.textView.attributedText);
+    
+
+}
 @end

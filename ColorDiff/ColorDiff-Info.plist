@@ -6,6 +6,41 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleDisplayName</key>
+			<string></string>
+			<key>CFBundleExecutable</key>
+			<string></string>
+			<key>CFBundleGetInfoString</key>
+			<string></string>
+			<key>CFBundleIdentifier</key>
+			<string></string>
+			<key>CFBundleInfoDictionaryVersion</key>
+			<string>6.0</string>
+			<key>CFBundleName</key>
+			<string></string>
+			<key>CFBundleShortVersionString</key>
+			<string></string>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>linedpaper32</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Patch File</string>
+			<key>CFBundleVersion</key>
+			<string></string>
+			<key>LSApplicationCategoryType</key>
+			<string></string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+			<key>NSHumanReadableCopyright</key>
+			<string></string>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
@@ -20,6 +55,21 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLIconFile</key>
+			<string>linedpaper32</string>
+			<key>CFBundleURLName</key>
+			<string>Patch File</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -54,6 +104,41 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>CFBundleDisplayName</key>
+			<string></string>
+			<key>CFBundleExecutable</key>
+			<string></string>
+			<key>CFBundleGetInfoString</key>
+			<string></string>
+			<key>CFBundleIdentifier</key>
+			<string></string>
+			<key>CFBundleInfoDictionaryVersion</key>
+			<string>6.0</string>
+			<key>CFBundleName</key>
+			<string></string>
+			<key>CFBundleShortVersionString</key>
+			<string></string>
+			<key>CFBundleVersion</key>
+			<string></string>
+			<key>LSApplicationCategoryType</key>
+			<string></string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Patch File</string>
+			<key>UTTypeIdentifier</key>
+			<string>public.plain-text</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>linedpaper32</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>linedpaper32</string>
+		</dict>
 	</array>
 </dict>
 </plist>

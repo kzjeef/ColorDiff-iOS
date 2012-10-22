@@ -7,8 +7,26 @@
 //
 
 #import "CDAppDelegate.h"
+#import "CDDetailViewController.h"
 
 @implementation CDAppDelegate
+
+
+-(BOOL)application:(UIApplication *)application
+           openURL:(NSURL *)url
+ sourceApplication:(NSString *)sourceApplication
+        annotation:(id)annotation
+{
+    // Make sure url indicates a file (as opposed to, e.g., http://)
+    if (url != nil && [url isFileURL]) {
+        NSLog(@"requesting open:%@", url);
+        // Tell our OfflineReaderViewController to process the URL
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:CDOpenNewDocumentNotify object:[url copy]];
+    }
+    // Indicate that we have successfully opened the URL
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

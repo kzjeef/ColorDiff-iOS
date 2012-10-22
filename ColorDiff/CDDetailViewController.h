@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+#define CDOpenNewDocumentNotify @"Open New Document"
+
 @interface CDDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+- (IBAction)ColorIconClicked:(id)sender;
 @end
