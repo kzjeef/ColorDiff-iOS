@@ -50,6 +50,21 @@
     url = [notification object];
     
     if ([url isKindOfClass:[NSURL class ]] && [url isFileURL]) {
+        NSError *error;
+        NSString *text = [NSString stringWithContentsOfURL:url encoding:NSStringEncodingConversionAllowLossy error:&error];
+        
+        if (error) {
+            NSLog(@"error when open url:%@", url);
+            
+            // TODO: add some error alert here.
+            return;
+        }
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:text];
+        
+        // FIXME: use auto detect format.
+        [processor processPatchText:str withTheme:COLOR_TEXT_THEME_DAY suggestFormat:@"diffu"];
+        
+        self.textView.attributedText = str;
         // open set the content to this.
     }
 }
