@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -23,12 +23,14 @@
         <scene sceneID="16">
             <objects>
                 <viewController storyboardIdentifier="" title="Detail" id="4" customClass="CDDetailViewController" sceneMemberID="viewController">
-                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="jgb-l0-Ais">
+                    <view key="view" contentMode="scaleToFill" id="fKO-54-tuc">
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <string key="text">diff --git a/ColorDiff/CDTextProcessor.m b/ColorDiff/CDTextProcessor.m
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgb-l0-Ais">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                                <string key="text">diff --git a/ColorDiff/CDTextProcessor.m b/ColorDiff/CDTextProcessor.m
 index 3e554fa..18723b2 100644
 --- a/ColorDiff/CDTextProcessor.m
 +++ b/ColorDiff/CDTextProcessor.m
@@ -52,9 +54,23 @@ index 3e554fa..18723b2 100644
 +{
 +    
 +}</string>
-                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-eG-0ta">
+                                <color key="color" red="0.20000000000000001" green="0.20000000000000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jgb-l0-Ais" firstAttribute="leading" secondItem="fKO-54-tuc" secondAttribute="leading" type="default" id="ZDr-JE-fc2"/>
+                            <constraint firstItem="jgb-l0-Ais" firstAttribute="top" secondItem="fKO-54-tuc" secondAttribute="top" type="default" id="bs4-Zh-V6m"/>
+                            <constraint firstItem="jgb-l0-Ais" firstAttribute="centerX" secondItem="Xft-eG-0ta" secondAttribute="centerX" type="default" id="izo-21-12i"/>
+                            <constraint firstItem="jgb-l0-Ais" firstAttribute="bottom" secondItem="fKO-54-tuc" secondAttribute="bottom" type="default" id="reo-XB-su1"/>
+                            <constraint firstItem="jgb-l0-Ais" firstAttribute="centerY" secondItem="Xft-eG-0ta" secondAttribute="centerY" type="default" id="zFT-ww-9c0"/>
+                            <constraint firstItem="jgb-l0-Ais" firstAttribute="trailing" secondItem="fKO-54-tuc" secondAttribute="trailing" type="default" id="zei-uf-vws"/>
+                        </constraints>
+                    </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="53">
                         <barButtonItem key="rightBarButtonItem" title="Color" id="6g1-VL-UP9">
@@ -64,6 +80,7 @@ index 3e554fa..18723b2 100644
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="isBusying" destination="Xft-eG-0ta" id="Pnb-sm-ihx"/>
                         <outlet property="textView" destination="jgb-l0-Ais" id="1Wl-we-2E8"/>
                     </connections>
                 </viewController>
@@ -142,9 +159,26 @@ index 3e554fa..18723b2 100644
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-366" y="248"/>
+            <point key="canvasLocation" x="-574" y="211"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CDDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CDDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ColorIconClicked:"/>
+                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="isBusying" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="CDMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CDMasterViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

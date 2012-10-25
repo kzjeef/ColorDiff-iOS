@@ -43,28 +43,40 @@
     }
 }
 
-- (void)openApplicationWithURL:(NSNotification *)notification 
+- (void)openApplicationWithURL:(NSNotification *)notification
 {
     NSURL *url;
     
     url = [notification object];
     
     if ([url isKindOfClass:[NSURL class ]] && [url isFileURL]) {
-        NSError *error;
-        NSString *text = [NSString stringWithContentsOfURL:url encoding:NSStringEncodingConversionAllowLossy error:&error];
         
-        if (error) {
-            NSLog(@"error when open url:%@", url);
+        self.textView.attributedText = nil;
+        self.textView.text = nil;
+        
+        self.isBusying.hidden = NO;
+        [self.isBusying startAnimating];
+        
+        dispatch_async(dispatch_queue_create("patch process", nil), ^() {
+            NSError *error;
+            NSString *text = [NSString stringWithContentsOfURL:url encoding:NSStringEncodingConversionAllowLossy error:&error];
             
-            // TODO: add some error alert here.
-            return;
-        }
-        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:text];
-        
-        // FIXME: use auto detect format.
-        [processor processPatchText:str withTheme:COLOR_TEXT_THEME_DAY suggestFormat:@"diffu"];
-        
-        self.textView.attributedText = str;
+            if (error) {
+                NSLog(@"error when open url:%@", url);
+                [self.isBusying stopAnimating];
+                // TODO: add some error alert here.
+                return;
+            }
+            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:text];
+            
+            // FIXME: use auto detect format.
+            [processor processPatchText:str withTheme:COLOR_TEXT_THEME_DAY suggestFormat:@"diffu"];
+            
+            dispatch_async(dispatch_get_main_queue(), ^() {
+                [self.isBusying stopAnimating];
+                self.textView.attributedText = str;
+            });
+        });
         // open set the content to this.
     }
 }
@@ -78,10 +90,6 @@
     NSLog(@"Detail View Controller did load");
 
     [self configureView];
-    
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc
-                                       ] initWithAttributedString:self.textView.attributedText];
-    self.textView.attributedText = [processor processPatchText:str withTheme:COLOR_TEXT_THEME_DAY suggestFormat:@"diffu"];
     
     NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(openApplicationWithURL:)

@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *isBusying;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 - (IBAction)ColorIconClicked:(id)sender;
